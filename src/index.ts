@@ -25,7 +25,7 @@ app.get("/cr-stats", async (c) => {
     if (!apiKey) {
       console.log("No API key found, using fallback data");
       const fallbackPlayerData = fallbackData as ClashRoyalePlayer;
-      const response = transformPlayerData(fallbackPlayerData);
+      const response = transformPlayerData(fallbackPlayerData, true);
       return c.json(response);
     }
 
@@ -44,7 +44,7 @@ app.get("/cr-stats", async (c) => {
         `API request failed with status ${response.status}, using fallback data`
       );
       const fallbackPlayerData = fallbackData as ClashRoyalePlayer;
-      const fallbackResponse = transformPlayerData(fallbackPlayerData);
+      const fallbackResponse = transformPlayerData(fallbackPlayerData, true);
       return c.json(fallbackResponse);
     }
 
@@ -57,7 +57,7 @@ app.get("/cr-stats", async (c) => {
 
     // Use fallback data on any error
     const fallbackPlayerData = fallbackData as ClashRoyalePlayer;
-    const fallbackResponse = transformPlayerData(fallbackPlayerData);
+    const fallbackResponse = transformPlayerData(fallbackPlayerData, true);
     return c.json(fallbackResponse);
   }
 });

@@ -23,7 +23,7 @@ export function getTopAchievements(achievements: Achievement[]): Achievement[] {
 /**
  * Transform Clash Royale API response to our custom format
  */
-export function transformPlayerData(playerData: ClashRoyalePlayer): CRStatsResponse {
+export function transformPlayerData(playerData: ClashRoyalePlayer, isFallback: boolean = false): CRStatsResponse {
   return {
     tag: playerData.tag,
     name: playerData.name,
@@ -39,5 +39,6 @@ export function transformPlayerData(playerData: ClashRoyalePlayer): CRStatsRespo
     arena: playerData.arena,
     achievements: getTopAchievements(playerData.achievements),
     currentFavouriteCard: playerData.currentFavouriteCard,
+    isFallback,
   };
 }

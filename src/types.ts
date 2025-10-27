@@ -58,7 +58,11 @@ export interface Achievement {
 export interface CRStatsResponse {
   tag: string;
   name: string;
-  clan: object;
+  clan: {
+    tag: string;
+    name: string;
+    badgeId: number;
+  };
   expLevel: number;
   topBadges: Badge[];
   trophies: number;
@@ -67,7 +71,22 @@ export interface CRStatsResponse {
   wins: number;
   losses: number;
   threeCrownWins: number;
-  arena: object;
+  arena: {
+    id: number;
+    name: string;
+  };
   achievements: Achievement[];
-  currentFavouriteCard: object;
+  currentFavouriteCard: {
+    name: string;
+    id: number;
+    maxLevel: number;
+    maxEvolutionLevel?: number;
+    elixirCost: number;
+    iconUrls: {
+      medium: string;
+      evolutionMedium?: string;
+    };
+    rarity: string;
+  };
+  isFallback: boolean;
 }
